@@ -21,6 +21,12 @@ const postSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User',
   },
+  _comments: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Comment',
+    },
+  ],
 });
 
 // write some encryption for Password

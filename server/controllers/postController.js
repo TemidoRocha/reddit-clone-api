@@ -36,6 +36,11 @@ postController.getAll = (req, res) => {
       path: '_creator',
       select: 'username createdAt -_id',
     })
+    .populate({
+      path: '_comments',
+      select: 'text createdAt _creator',
+      match: { isDeleted: false },
+    })
     .then((post) => res.status(200).json(post))
     .catch((err) => res.status(500).json({ message: err }));
 };
